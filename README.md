@@ -45,7 +45,7 @@ The Zen Cart vagrant box defines a directory called webroot, that it uses to sha
 Such that anything in the webroot directory will be served by the **http://zen.local** url.
 
 You can therefore either clone the Zen Cart repository directly as the webroot directory or as a sub directory of webroot.
-for example if you cloned the repository to webroot/zencart then it would be accessed as http://zencart/...
+for example if you cloned the repository to webroot/zencart then it would be accessed as **http://zencart/...**
 
 If you want to clone directly as the webroot directory then you can juts do
 
@@ -57,7 +57,7 @@ otherwise you would first have to create the webroot directory then do
 With that done, you can now do
 <pre><code>vagrant up</code></pre>
 
-Once the box is up and running, as mentioned earlier, it should be accessible in your browser using **http//zen.local** or **https://zen.local**
+Once the box is up and running, as mentioned earlier, it should be accessible in your browser using **http://zen.local** or **https://zen.local**
 You also have access to a phpMyAdmin instance at **http://zen.local/phpmyadmin**
 
 There are some preset passwords as well.
@@ -84,8 +84,8 @@ Detailed Installation Instructions
 
 ### Ubuntu ###
 
-Install Virtualbox sudo
-<pre><code>apt-get install virtualbox</code></pre>
+Install Virtualbox
+<pre><code>sudo apt-get install virtualbox</code></pre>
 
 Install Vagrant
 <pre><code>sudo apt-get install vagrant</code></pre>
