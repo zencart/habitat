@@ -76,7 +76,25 @@ password = zencart
 Developer Notes
 -------
 
-@todo
+To make life a bit easier for developer, we have provide 2 overrides.
+
+The first relates to the installer. In zc_install/extra_configures you can add a php file
+
+<pre><code>
+&lt;?php <br>
+define('DEVELOPER_MODE', true);
+</code></pre>
+
+This will disable admin directory renaming e.g. leaving the admin directory named 'admin' and also setting the initial admin temp password to **developer1** instead of a random string.
+
+You can also add a file to admin/includes/extra_configures
+
+<pre><code>
+&lt;?php <br>
+define('ADMIN_BLOCK_WARNING_OVERRIDE', true);
+</code></pre>
+
+This disables the blocking alert page that requires you to  delete the install directory and rename the admin directory.
 
 Detailed Installation Instructions
 --------
