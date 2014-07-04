@@ -76,7 +76,7 @@ password = zencart
 Developer Notes
 -------
 
-To make life a bit easier for developer, we have provide 2 overrides.
+To make life a bit easier for developer, we have provided 2 overrides.
 
 The first relates to the installer. In zc_install/extra_configures you can add a php file
 
