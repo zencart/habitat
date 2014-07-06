@@ -26,8 +26,6 @@ sudo service apache2 restart > /dev/null 2>&1
 
 if [ ! -z "$4" ]; then 
  
-  echo "Trying to Clone v160 > web/zen"
-
   if [ "$(ls -A /home/vagrant/web/$3  > /dev/null 2>&1)" ]; then
     echo "Take action /home/vagrant/web/$3 is not Empty"
   else
