@@ -2,7 +2,7 @@ class Habitat
   def Habitat.configure(config, settings)
     # Configure The Box
     config.vm.box = "habitat"
-    #config.vm.hostname = "homestead"
+    #config.vm.hostname = "habitat"
 
     config.vm.synced_folder "./", "/vagrant", disabled: true
 
@@ -34,7 +34,7 @@ class Habitat
 
     # Install All The Configured Apache Sites
     # Do the defaults first
-    
+
     if settings.has_key?("do_default_site") && settings["do_default_site"] == true
 
       config.vm.provision "shell" do |p|

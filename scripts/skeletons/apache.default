@@ -11,6 +11,11 @@
 
 	ServerAdmin webmaster@localhost
 	DocumentRoot /var/www/html/DOCUMENT_ROOT
+	<Directory /var/www/html/DOCUMENT_ROOT>
+        Options -Indexes +FollowSymLinks
+        AllowOverride All
+        Require all granted
+	</Directory>
 
 	# Available loglevels: trace8, ..., trace1, debug, info, notice, warn,
 	# error, crit, alert, emerg.
@@ -33,11 +38,16 @@
 <IfModule mod_ssl.c>
 	<VirtualHost _default_:443>
 
-                ServerName SERVER_NAME
+		ServerName SERVER_NAME
 
 		ServerAdmin webmaster@localhost
 
 		DocumentRoot /var/www/html/DOCUMENT_ROOT
+		<Directory /var/www/html/DOCUMENT_ROOT>
+	        Options -Indexes +FollowSymLinks
+	        AllowOverride All
+	        Require all granted
+		</Directory>
 
 		# Available loglevels: trace8, ..., trace1, debug, info, notice, warn,
 		# error, crit, alert, emerg.
