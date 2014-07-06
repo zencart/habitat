@@ -10,7 +10,7 @@ class Habitat
 
       config.vm.synced_folder "scripts/", "/home/vagrant/scripts/", :create => true
       config.vm.synced_folder "habitat/", "/home/vagrant/habitat/", :create => true
-      config.vm.synced_folder "habitat/web/", "/home/vagrant/web/", :owner => "www-data", :create => true
+      config.vm.synced_folder "habitat/web/", "/home/vagrant/web/", :create => true
 
     end
 
