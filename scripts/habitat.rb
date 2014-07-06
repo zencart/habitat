@@ -1,7 +1,8 @@
 class Habitat
   def Habitat.configure(config, settings)
     # Configure The Box
-    config.vm.box = "habitat"
+    config.vm.box = "zencart/habitat"
+    config.vm.box_url = "https://s3.amazonaws.com/zencart-vagrant-boxes/habitat.box"
     #config.vm.hostname = "habitat"
 
     config.vm.synced_folder "./", "/vagrant", disabled: true
