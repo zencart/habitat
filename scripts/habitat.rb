@@ -1,9 +1,9 @@
 class Habitat
   def Habitat.configure(config, settings)
     # Configure The Box
+
     config.vm.box = "zencart/habitat"
     config.vm.box_url = "https://s3.amazonaws.com/zencart-vagrant-boxes/habitat.box"
-    #config.vm.hostname = "habitat"
 
     config.vm.synced_folder "./", "/vagrant", disabled: true
 
@@ -37,15 +37,6 @@ class Habitat
     end
 
     # Install All The Configured Apache Sites
-    # Do the defaults first
-
-    if settings.has_key?("do_default_site") && settings["do_default_site"] == true
-
-      config.vm.provision "shell" do |p|
-          p.inline = "bash /home/vagrant/scripts/serve.sh $1 $2 $3 $4 $5"
-          p.args = ["apache.default", "zen.local", "zen", "https://github.com/zencart/zc-v1-series.git", "v160"]
-      end
-    end
 
     if settings.has_key?("sites")
       settings["sites"].each do |site|

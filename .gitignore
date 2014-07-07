@@ -3,3 +3,4 @@
 .idea
 .settings
 .vagrant
+,Habitat.local.yaml
