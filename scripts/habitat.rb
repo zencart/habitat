@@ -25,6 +25,9 @@ class Habitat
       vb.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
       vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
     end
+    config.vm.provision "shell" do |s|
+      s.inline = "bash /home/vagrant/scripts/tools.sh"
+    end
 
     # Register All Of The Configured Shared Folders
     if settings.has_key?("folders")
