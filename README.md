@@ -19,6 +19,6 @@ vagrant box remove zencart/habitat<br>
 You can then install the updated box by simply running "vagrant up" (which will automatically download the updated box you "removed" with vagrant box remove)
 ... or you can manually add the box by hand with:
 
-vagrant box add habitat https://s3.amazonaws.com/zencart-vagrant-boxes/habitat.box
+vagrant box add zencart/habitat https://s3.amazonaws.com/zencart-vagrant-boxes/habitat.box
 
 
