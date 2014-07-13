@@ -11,3 +11,8 @@ sites:
     skeleton: apache.default
     github: https://github.com/zencart/zc-v1-series.git
     branch: v160
+  - domain: devdocs.local
+    dir: devdocs
+    skeleton: apache.default
+    github: https://github.com/zencart/devdocs.git
+    branch: master
