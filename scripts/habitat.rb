@@ -5,6 +5,8 @@ class Habitat
     config.vm.box = "zencart/habitat"
     config.vm.box_url = "https://s3.amazonaws.com/zencart-vagrant-boxes/habitat.box"
 
+    config.vm.hostname = "habitat"
+
     config.vm.synced_folder "./", "/vagrant", disabled: true
 
     if settings.has_key?("do_default_map") && settings["do_default_map"] == true
