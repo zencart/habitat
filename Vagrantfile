@@ -20,6 +20,8 @@ end
 require 'yaml'
 require path + '/scripts/habitat.rb'
 
-Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  Habitat.configure(config, YAML::load(File.read(path + '/Habitat.local.yaml')))
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |vconfig|
+  vconfig.vm.define :Habitat do |config|
+    Habitat.configure(config, YAML::load(File.read(path + '/Habitat.local.yaml')))
+  end
 end
