@@ -67,8 +67,13 @@ class Habitat
         end
       end
     end
-    config.vm.provision "shell" do |s|
-      s.inline = "bash /home/vagrant/scripts/tools.sh"
+
+    # Install localized unit-testing tools
+    if !settings.has_key?("localize_tools") || settings["localize_tools"] == true
+      config.vm.provision "shell" do |s|
+        s.inline = "bash /home/vagrant/scripts/tools.sh"
+      end
     end
+
   end
 end

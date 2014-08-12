@@ -18,7 +18,7 @@ if ! File.exists?(path + '/Habitat.local.yaml')
 end
 
 require 'yaml'
-require path + '/scripts/habitat.rb'
+require path + '/habitat.rb'
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |vconfig|
   vconfig.vm.define :Habitat do |config|
