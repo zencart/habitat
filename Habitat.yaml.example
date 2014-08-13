@@ -16,3 +16,20 @@ sites:
     skeleton: apache.default
     github: https://github.com/zencart/devdocs.git
     branch: master
+
+
+## Optional to override folder mapping to a location other than the habitat/web folder on the local PC:
+#folders:
+#  - map: /pc_folder/path
+#    to: /home/vagrant/web/
+#    create: true
+
+
+# Optional to add your own public and private key configs ... so you can connect to github/bitbucket logged in as yourself
+authorize: ~/.ssh/id_rsa.pub
+
+keys:
+  - ~/.ssh/id_rsa
+
+localize_tools: true
+

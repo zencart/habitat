@@ -15,7 +15,7 @@ server {
     location = /robots.txt  { access_log off; log_not_found off; }
 
     access_log off;
-    error_log  /var/log/nginx/SERVER_NAME-error.log error;
+    error_log  /home/vagrant/habitat/logs/nginx/SERVER_NAME-error.log error;
 
     error_page 404 /index.php;
 

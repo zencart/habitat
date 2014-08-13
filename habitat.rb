@@ -11,7 +11,7 @@ class Habitat
 
     config.vm.synced_folder "./", "/vagrant", disabled: true
 
-    if settings.has_key?("do_default_map") && settings["do_default_map"] == true
+    if !settings.has_key?("do_default_map") || settings["do_default_map"] != false
 
       config.vm.synced_folder "scripts/", "/home/vagrant/scripts/", :create => true
       config.vm.synced_folder "habitat/", "/home/vagrant/habitat/", :create => true

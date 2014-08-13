@@ -8,15 +8,20 @@
 
 INPUT_FILE=/home/vagrant/scripts/skeletons/$1
 OUTPUT_FILE=/home/vagrant/$2
-echo "skeleton = $INPUT_FILE"
-echo "server conf = $OUTPUT_FILE"
+echo "Skeleton = $INPUT_FILE"
+echo "Server conf = $OUTPUT_FILE"
 echo "Document Root = $3"
 echo "Git Repository = $4"
 echo "Git Branch = $5"
 
+# housekeeping - set up logs folders for easy access to error logs
+if [ ! -d "/home/vagrant/habitat/logs/apache2" ]; then
+  mkdir -pv /home/vagrant/habitat/logs/apache2
+fi
+
 # make document root folder if not present
-if [ -d "$DIRECTORY" ]; then
-  sudo mkdir /home/vagrant/web/$3
+if [ ! -d "/home/vagrant/web/$3" ]; then
+  sudo mkdir -pv /home/vagrant/web/$3
 fi
 
 # create and enable vhost
@@ -25,23 +30,22 @@ sed "s/SERVER_NAME/$2/g;s/DOCUMENT_ROOT/$3/g" $INPUT_FILE > $OUTPUT_FILE
 if [[ "$1" =~ nginx.* ]]; then
   sudo mv $OUTPUT_FILE /etc/nginx/sites-available/$2
   ln -s "/etc/nginx/sites-available/$2" "/etc/nginx/sites-enabled/$2"
-  service nginx restart
-  service php5-fpm restart > /dev/null 2>&1
+  sudo service nginx restart
+  sudo service php5-fpm restart > /dev/null 2>&1
 else
   sudo mv $OUTPUT_FILE /etc/apache2/sites-available/$2.conf
-  sudo a2ensite $2.conf
-  sudo service apache2 restart > /dev/null 2>&1
+  sudo a2ensite $2.conf -q
+  sudo service apache2 restart
 fi
 
 # do any repo checkouts necessary
 if [ ! -z "$4" ]; then
 
-  if [ "$(ls -A /home/vagrant/web/$3  > /dev/null 2>&1)" ]; then
-    echo "Take action /home/vagrant/web/$3 is not Empty"
-  else
-    echo "/home/vagrant/web/$3 is Empty"
-    sudo git clone $4 /home/vagrant/web/$3
-    cd /home/vagrant/web/$3
-    sudo git checkout $5
+  # do clone only if directory is empty
+  if [ ! "$(ls -A /home/vagrant/web/$3 )" ]; then
+    sudo git clone -q $4 /home/vagrant/web/$3
   fi
+
+  cd /home/vagrant/web/$3
+  sudo git checkout $5
 fi
