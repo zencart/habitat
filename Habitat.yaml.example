@@ -26,10 +26,9 @@ sites:
 
 
 # Optional to add your own public and private key configs ... so you can connect to github/bitbucket logged in as yourself
-authorize: ~/.ssh/id_rsa.pub
 
+authorize: ~/.ssh/id_rsa.pub
 keys:
   - ~/.ssh/id_rsa
 
-localize_tools: true
 

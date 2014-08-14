@@ -7,7 +7,7 @@ class Habitat
     #config.vm.box_version = "~1.0"
     #config.vm.box_check_update = false
 
-    config.vm.hostname = "habitat.dev"
+    config.vm.hostname = settings["hostname"] ||= "habitat"
 
     config.vm.synced_folder "./", "/vagrant", disabled: true
 
@@ -16,6 +16,7 @@ class Habitat
       config.vm.synced_folder "scripts/", "/home/vagrant/scripts/", :create => true
       config.vm.synced_folder "habitat/", "/home/vagrant/habitat/", :create => true
       config.vm.synced_folder "habitat/web/", "/home/vagrant/web/", :create => true
+      config.vm.synced_folder "habitat/tmp/", "/var/lib/phpmyadmin/tmp/", :create => true
 
     end
 
@@ -33,9 +34,13 @@ class Habitat
 
     # Configure The Public Key For SSH Access
     if settings.has_key?("authorize")
+      path = settings["authorize"]
+      if path.start_with?("~/.ssh")
+        path = path.gsub(/^~\/\.ssh/, File.join(Dir.home, ".ssh"))
+      end
       config.vm.provision "shell" do |s|
         s.inline = "echo $1 | tee -a /home/vagrant/.ssh/authorized_keys"
-        s.args = [File.read(settings["authorize"])]
+        s.args = [File.read(path)]
       end
     end
 
@@ -43,6 +48,9 @@ class Habitat
     if settings.has_key?("keys")
       settings["keys"].each do |key|
         config.vm.provision "shell" do |s|
+          if key.start_with?("~/.ssh")
+            key = key.gsub(/^~\/\.ssh/, File.join(Dir.home, ".ssh"))
+          end
           s.privileged = false
           s.inline = "echo \"$1\" > /home/vagrant/.ssh/$2 && chmod 600 /home/vagrant/.ssh/$2"
           s.args = [File.read(key), key.split('/').last]
@@ -69,10 +77,20 @@ class Habitat
     end
 
     # Install localized unit-testing tools
+
     if !settings.has_key?("localize_tools") || settings["localize_tools"] == true
       config.vm.provision "shell" do |s|
         s.inline = "bash /home/vagrant/scripts/tools.sh"
       end
+    end
+
+    # Output some instructional information useful for new habitat users
+
+    post_up_message = "The virtual machine (VM) is now running. Its IP address is " + (settings["ip"] ||= "172.22.22.22") + " and we recommend that you add habitat.dev to your hosts file with that IP address.\nYou can reach any sites you've configured via the Habitat.yaml file by putting those URLs in your browser as long as you have a hosts file entry for those domains and this machine's IP address.\nYou can reach phpMyAdmin via http://" + (settings["ip"] ||= "172.22.22.22") + "/phpmyadmin -- the username and password are both 'zencart'.\nApache and MySQL error logs can be found in the habitat/logs folder in the same directory where you just ran the vagrant up command. \nTo shut down this VM, type 'vagrant halt'. You can start it again later with 'vagrant up'.\nTo destroy this VM, type 'vagrant destroy', which will delete all MySQL database content and free up the disk space used by the VM."
+    if Vagrant::VERSION =~ /^1.[0-5]/
+      puts post_up_message
+      else
+      config.vm.post_up_message = post_up_message
     end
 
   end

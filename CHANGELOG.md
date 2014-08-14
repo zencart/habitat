@@ -8,6 +8,12 @@ CHANGELOG
 - July 6 2014 - VM box updated. added xdebug
 - July 6 2014 - VM Box updated. php.ini changes. Added some tools to shared tools directory
 - July 7 2014 - VM Box updated. Updates to helper scripts
-
-
+- Aug 5 2014  - VM Box updated. Added nginx support
+- Aug 13 2014 - VM Box updated. 
+	- All habitat core files and scripts updated.
+	- Renamed use of habitat.local.yaml to just Habitat.yaml for simplicity.
+	- Configured phpMyAdmin to use the habitat/tmp folder for import/export actions.
+	- Added ability to specify RSA keys to apply to the VM so that private repositories can be accessed from the VM.
+	- Added ability to specify ~/.ssh instead of fully qualified path on most systems.
+    - Added ability to add custom mappings to override default synced folder paths. This is mainly to allow specifying a different source dir to be mapped to the default /home/vagrant/web/ used by the default vhost configurations.
 

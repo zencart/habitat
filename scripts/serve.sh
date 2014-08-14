@@ -14,11 +14,6 @@ echo "Document Root = $3"
 echo "Git Repository = $4"
 echo "Git Branch = $5"
 
-# housekeeping - set up logs folders for easy access to error logs
-if [ ! -d "/home/vagrant/habitat/logs/apache2" ]; then
-  mkdir -pv /home/vagrant/habitat/logs/apache2
-fi
-
 # make document root folder if not present
 if [ ! -d "/home/vagrant/web/$3" ]; then
   sudo mkdir -pv /home/vagrant/web/$3
