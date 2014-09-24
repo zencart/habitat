@@ -39,8 +39,9 @@ if [ ! -z "$4" ]; then
   # do clone only if directory is empty
   if [ ! "$(ls -A /home/vagrant/web/$3 )" ]; then
     sudo git clone -q $4 /home/vagrant/web/$3
+    # and checkout the specified branch
+    cd /home/vagrant/web/$3
+    sudo git checkout $5
   fi
 
-  cd /home/vagrant/web/$3
-  sudo git checkout $5
 fi
