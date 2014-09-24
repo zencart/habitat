@@ -71,7 +71,7 @@ class Habitat
       settings["sites"].each do |site|
         config.vm.provision "shell" do |s|
             s.inline = "bash /home/vagrant/scripts/serve.sh $1 $2 $3 $4 $5"
-            s.args = [site["skeleton"], site["domain"], site["dir"], site["github"] ||= "", site["branch"] ||= ""]
+            s.args = [site["skeleton"], site["domain"], site["dir"], site["git_url"] ||= "", site["branch"] ||= ""]
         end
       end
     end
