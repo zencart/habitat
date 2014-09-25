@@ -16,4 +16,6 @@ CHANGELOG
 	- Added ability to specify RSA keys to apply to the VM so that private repositories can be accessed from the VM.
 	- Added ability to specify ~/.ssh instead of fully qualified path on most systems.
     - Added ability to add custom mappings to override default synced folder paths. This is mainly to allow specifying a different source dir to be mapped to the default /home/vagrant/web/ used by the default vhost configurations.
-
+- Sept 24 2014 - VM box updated to PHP 5.6
+    - Habitat.yaml syntax changed "github:" key to "git_url:" to be more generic
+    - node.js, grunt, gulp, bower, sqlite3 installed on vm by default
