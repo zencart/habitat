@@ -42,6 +42,8 @@ if [ ! -z "$4" ]; then
     # and checkout the specified branch
     cd /home/vagrant/web/$3
     sudo git checkout $5
+    git submodule init
+    git submodule update
   fi
 
 fi
