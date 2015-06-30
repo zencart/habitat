@@ -12,7 +12,7 @@ sites:
   - domain: devdocs.local
     dir: devdocs
     skeleton: apache.default
-    git_url: https://github.com/zencart/devdocs.git
+    git_url: https://github.com/zencart/documentation.git
     branch: master
 
 do_default_map: true
