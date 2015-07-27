@@ -15,6 +15,8 @@ sites:
     git_url: https://github.com/zencart/documentation.git
     branch: master
 
+## Optional: If you need to override or set a different document-root, add a "docroot: /public" to one of the 'sites' definitions above. 
+
 do_default_map: true
 
 ## Optional to override folder mapping to a location other than the habitat/web folder on the local PC:
