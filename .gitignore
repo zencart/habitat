@@ -5,3 +5,4 @@
 .vagrant
 Habitat.local.yaml
 Habitat.yaml
+habitat/tools/
