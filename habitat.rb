@@ -12,17 +12,15 @@ class Habitat
     config.vm.synced_folder "./", "/vagrant", disabled: true
 
     if !settings.has_key?("do_default_map") || settings["do_default_map"] != false
-
       config.vm.synced_folder "scripts/", "/home/vagrant/scripts/", :create => true
       config.vm.synced_folder "habitat/", "/home/vagrant/habitat/", :create => true
       config.vm.synced_folder "habitat/web/", "/home/vagrant/web/", :create => true
       config.vm.synced_folder "habitat/tmp/", "/var/lib/phpmyadmin/tmp/", :create => true
-
     end
 
     # Configure A Private Network IP
     config.vm.network :private_network, ip: settings["ip"] ||= "172.22.22.22"
-    config.vm.network "forwarded_port", guest: 3306, host: 3306
+    config.vm.network "forwarded_port", guest: 3306, host: 3306, auto_correct: true
 
     # Configure A Few VirtualBox Settings
     config.vm.provider "virtualbox" do |vb|
