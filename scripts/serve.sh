@@ -22,7 +22,7 @@ if [ ! -d "/home/vagrant/web/$3" ]; then
 fi
 
 # create and enable vhost
-sed "s/SERVER_NAME/$2/g;s/DOCUMENT_ROOT/$3$4/g" $INPUT_FILE > $OUTPUT_FILE
+sed "s/SERVER_NAME/$2/g;s|DOCUMENT_ROOT|$3$4|g" $INPUT_FILE > $OUTPUT_FILE
 
 if [[ "$1" =~ nginx.* ]]; then
   sudo mv $OUTPUT_FILE /etc/nginx/sites-available/$2

@@ -68,7 +68,7 @@ class Habitat
     if settings.has_key?("sites")
       settings["sites"].each do |site|
         config.vm.provision "shell" do |s|
-            s.inline = "bash /home/vagrant/scripts/serve.sh $1 $2 $3 $4 $5 $6"
+            s.inline = "bash /home/vagrant/scripts/serve.sh \"$1\" \"$2\" \"$3\" \"$4\" \"$5\" \"$6\""
             s.args = [site["skeleton"], site["domain"], site["dir"], site["docroot"] ||= "", site["git_url"] ||= "", site["branch"] ||= ""]
         end
       end
