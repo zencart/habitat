@@ -18,4 +18,4 @@ CHANGELOG
     - Added ability to add custom mappings to override default synced folder paths. This is mainly to allow specifying a different source dir to be mapped to the default /home/vagrant/web/ used by the default vhost configurations.
 - Sept 24 2014 - VM box updated to PHP 5.6
     - Habitat.yaml syntax changed "github:" key to "git_url:" to be more generic
-    - node.js, grunt, gulp, bower, sqlite3 installed on vm by default
+- June 2015 - VM box updated to Ubuntu 14.04.2 LTS, PHP 5.6.10, added doc_root option to yaml syntax
