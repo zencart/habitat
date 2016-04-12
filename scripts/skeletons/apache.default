@@ -14,7 +14,7 @@
 	<Directory /var/www/html/DOCUMENT_ROOT>
         Options -Indexes +FollowSymLinks
         AllowOverride All
-        Require all granted
+#        Require all granted
 	</Directory>
 
 	# Available loglevels: trace8, ..., trace1, debug, info, notice, warn,

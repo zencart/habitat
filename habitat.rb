@@ -2,8 +2,8 @@ class Habitat
   def Habitat.configure(config, settings)
     # Configure the box
 
-    config.vm.box = "zencart/habitat"
-    config.vm.box_url = "https://s3.amazonaws.com/zencart-vagrant-boxes/habitat.box"
+    config.vm.box = "zencart/habitat-php53"
+    config.vm.box_url = "https://s3.amazonaws.com/zencart-vagrant-boxes/habitat-php53.box"
     #config.vm.box_version = "~1.0"
     #config.vm.box_check_update = false
 
