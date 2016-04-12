@@ -19,3 +19,4 @@ CHANGELOG
 - Sept 24 2014 - VM box updated to PHP 5.6
     - Habitat.yaml syntax changed "github:" key to "git_url:" to be more generic
 - June 2015 - VM box updated to Ubuntu 14.04.2 LTS, PHP 5.6.10, added doc_root option to yaml syntax
+- August 2015 - Added script to install Zend Z-Ray tools. Use "vagrant ssh" then "cd /home/vagrant/scripts", then run "zray.sh" to install. Access via browser: http://172.22.22.22:10081
